@@ -6,13 +6,15 @@ import android.view.SurfaceHolder;
 /**
  * Created by Diogo on 08/06/2015.
  */
-public class MainThread {
+public class LoopThread extends Thread
+{
+
     private SurfaceHolder surfaceHolder;
     private GamePanel gamePanel;
     private boolean running;
     public static Canvas canvas;
 
-    public MainThread(SurfaceHolder surfaceHolder, GamePanel gamePanel)
+    public LoopThread(SurfaceHolder surfaceHolder, GamePanel gamePanel)
     {
         super();
         this.surfaceHolder = surfaceHolder;
@@ -23,7 +25,6 @@ public class MainThread {
     public void run()
     {
         while(running) {
-            startTime = System.nanoTime();
             canvas = null;
 
             //try locking the canvas for pixel editing
@@ -33,9 +34,12 @@ public class MainThread {
                     this.gamePanel.update();
                     this.gamePanel.draw(canvas);
                 }
-            } catch (Exception e) {
-            } finally {
-                if (canvas != null) {
+            } catch (Exception e) {}
+
+            //always executed regardless the exception caught
+            finally {
+                if (canvas != null)
+                {
                     try {
                         surfaceHolder.unlockCanvasAndPost(canvas);
                     } catch (Exception e) {
