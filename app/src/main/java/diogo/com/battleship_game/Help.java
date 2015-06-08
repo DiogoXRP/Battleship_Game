@@ -27,7 +27,6 @@ public class Help extends ActionBarActivity {
                 startActivity(i);
             }
         });
-
     }
 
 
