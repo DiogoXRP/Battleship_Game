@@ -1,5 +1,6 @@
 package diogo.com.battleship_game;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -11,7 +12,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 
-public class GameScreen extends ActionBarActivity {
+public class GameScreen extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +23,13 @@ public class GameScreen extends ActionBarActivity {
         //Full Screen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(new GamePanel(this));
+        GridView pixelGrid = new GridView(this);
+        pixelGrid.setNumCols(4);
+        pixelGrid.setNumRows(6);
+
+        setContentView(pixelGrid);
+
+        //setContentView(R.layout.activity_game_screen);
         Menu();
     }
 

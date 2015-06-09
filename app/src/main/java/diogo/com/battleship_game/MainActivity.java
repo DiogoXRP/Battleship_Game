@@ -27,8 +27,8 @@ public class MainActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_main);
-        //MediaPlayer mp = MediaPlayer.create(MainActivity.this, R.raw.opening);
-        //mp.start();
+        MediaPlayer mp = MediaPlayer.create(MainActivity.this, R.raw.opening);
+        mp.start();
         //playMusic();
 
         gameScreen();
